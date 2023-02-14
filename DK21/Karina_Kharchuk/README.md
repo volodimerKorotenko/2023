@@ -1,0 +1,1 @@
+# Kharchuk Karina working directory
