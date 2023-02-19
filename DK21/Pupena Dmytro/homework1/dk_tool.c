@@ -10,14 +10,17 @@ int create_matrix(int a, int b)
     {
         do
         {
-          matrix[a][b] = scanf("введіть значення для (%i %i)\n", d,c);
-          return matrix[a][b];
+            printf("значення матриці [%i][%i]=",d,c);
+            scanf("%d", &count);
+            matrix[g][d][c] = count;
            d=d+1;
 
         } while (d<=b);
         c=c+1;
         d=1;
     } while (c<=a);
-    return matrix[1][1],matrix[1][2],matrix[2][1],matrix[2][2];
+    d=1;
+    c=1;
+    return matrix[g][1][1],matrix[g][1][2],matrix[g][2][1],matrix[g][2][2];
     
 }
