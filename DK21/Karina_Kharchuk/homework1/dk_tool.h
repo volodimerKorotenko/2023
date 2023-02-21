@@ -8,5 +8,6 @@
 
  int search_wanted(char* sentence, char* wanted);
 
+ void input_validation(int a);
 
 #endif /*dk_tool_h*/

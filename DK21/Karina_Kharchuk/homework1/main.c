@@ -17,13 +17,8 @@ int main(int argc, const char **argv)
 
         result = search_wanted(str, wanted);
 
-        if(result == -1)
-        {
-                printf("-1\n"); // wanted not found
-        } else {
-                printf("Wanted is found in %d position\n", result);
-        }
-
+        input_validation(result);
+        
         free(str);
         free(wanted);
 
