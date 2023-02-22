@@ -39,7 +39,7 @@ unsigned int mystrlen(const char* str)
 
 int search_wanted(char sentence[], char wanted[])
 {
-        int i = 0, j = 0, k = 0, first = 1;
+        int i = 0, j = 0, first = 1;
 
         if('\0' == sentence[0])
         {
@@ -48,7 +48,6 @@ int search_wanted(char sentence[], char wanted[])
 
                 while (sentence[i] != wanted[0] && sentence[i] != '\0'){
                         i++;
-                        k++;
                 }
 
                 if (sentence[i + 1] == '\0')
@@ -56,11 +55,11 @@ int search_wanted(char sentence[], char wanted[])
                             return -1;
                 }
 
-                while(sentence[i] == wanted [j] /*&& sentence[i] != '\0' && wanted[j] != '\0'*/)
-                {
+                while(sentence[i] == wanted [j] && sentence[i] != '\0' && wanted[j] != '\0')
+                { 
                         i++;
                         j++;
-                }
+                } 
 
                 if(sentence [i] != '\0' && wanted[j] != '\0' && sentence[i] != wanted [j])
                 {
@@ -85,16 +84,15 @@ int search_wanted(char sentence[], char wanted[])
 
                         if (wanted[i + 1] == '\0') {
                                 return first + 1;
-                              //  return -10;
-                        } else { return -1;}
+                        } else { 
+                                return -1;
+                        }
                 } else {
 
-                        first = i - j + 1;
+                        first = i - j;
 
                         if (wanted[i + 1] == '\0') {
-
-                                //return first + 1;
-                                return -5;
+                             return first + 1;
                         } else {
                                         return -1;
                         
