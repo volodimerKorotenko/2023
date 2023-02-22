@@ -1,59 +1,63 @@
 #include <stdio.h>
-#include <string.h>
 #include <stdlib.h>
-#include "dk_tool.h"
+#include <string.h>
 
-#define SIZE 16
+#define SIZE_ALLOCATE_MEM 16
+#define SIZE 8 
 
-char *allocate_binary_num(void)
+int *allocate_mem4num(void)
 {
-        char *str = (char *)malloc(SIZE * sizeof(char));
+        int *arr = malloc(SIZE_ALLOCATE_MEM * sizeof(int));
+        if (arr == NULL) {
+                fprintf(stderr, "Error: could not allocate memory for arr\n");
+                exit(EXIT_FAILURE);
+        }
+        return arr;
+}
 
+char *allocate_mem4str(void)
+{
+        char *str = malloc(SIZE_ALLOCATE_MEM * sizeof(char));
         if (str == NULL) {
-                fprintf(stderr, "Error: could not allocate memory for bnum");
+                fprintf(stderr, "Error: could not allocate memory for str\n");
                 exit(EXIT_FAILURE);
         }
         return str;
 }
 
-char *input_number(void)
+void free_mem4num(int *arr)
 {
-        char *binary_num = NULL;
-         
-        binary_num = allocate_binary_num();
-        printf("number = %s ", binary_num);
-         
-        if (fgets(binary_num, SIZE, stdin) != NULL) {
-                if ((strlen(binary_num) - 1) > 8) {
-                        fprintf(stderr, "Error: enter binary number length less then 8\n");
-                        exit(EXIT_FAILURE);
-                }
-                return binary_num; 
-        } 
-        fprintf(stderr, "Error: the buffer was not read completely");
-        exit(EXIT_FAILURE);
-}
-
-int number_grade(int a)
-{
-        for (int i = 0; i < 5; ++i) {
-                a *= 2;
+        if (arr != NULL) {
+                free(arr);
         }
-        return  a;
 }
 
-/*
-int alg4conv_bin2dec(void) 
+void free_mem4str(char *str)
 {
-
-
-
-}
-*/
-
-void free_binary_num(char *binary_num) 
-{
-        if (binary_num != NULL) {
-                free(binary_num);
+        if (str != NULL) {
+                free(str);
         }
+}
+
+
+void input_dec_num(int num)
+{
+        char *str = allocate_mem4str();
+
+        if ((sprintf(str, "%d", num)) > SIZE) {
+                fprintf(stderr, "Error: enter a number of 8 bits in length \n");
+                exit(EXIT_FAILURE);
+        }
+        free_mem4str(str);
+}
+
+void alg4conv_bin2dec(int num, int *arr)
+{
+        int result = 0;
+        for (int i = 0; i < SIZE; ++i) {
+                *(arr + i) = num % 10;
+                num /= 10;
+                result += *(arr + i) << i;
+        }
+        printf("decimal = %d\n", result);
 }
