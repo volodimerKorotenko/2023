@@ -1,12 +1,17 @@
 #include <stdio.h>
+#include "dk_tool.h"
+
 int main(void)
 {
-        char *str = NULL;
+        int n = 0;
 
-        str = allocate_binary_num();
-        printf("%s", str);
-        free_binary_num(str);
+        printf("Enter the binary number: \n");
+        scanf("%d", &n);
+
+        int *arr = allocate_mem4num();
+        input_dec_num(n);
+        alg4conv_bin2dec(n, arr);
+        free_mem4num(arr);
 
         return 0;
 }
-
