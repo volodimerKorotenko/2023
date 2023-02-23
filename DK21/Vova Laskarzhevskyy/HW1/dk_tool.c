@@ -7,7 +7,7 @@
 
 int *allocate_mem4num(void)
 {
-        int *arr = malloc(SIZE_ALLOCATE_MEM * sizeof(int));
+        int *arr = malloc(SIZE_ALLOCATE_MEM * sizeof(*arr));
         if (arr == NULL) {
                 fprintf(stderr, "Error: could not allocate memory for arr\n");
                 exit(EXIT_FAILURE);
@@ -17,7 +17,7 @@ int *allocate_mem4num(void)
 
 char *allocate_mem4str(void)
 {
-        char *str = malloc(SIZE_ALLOCATE_MEM * sizeof(char));
+        char *str = malloc(SIZE_ALLOCATE_MEM * sizeof(*str));
         if (str == NULL) {
                 fprintf(stderr, "Error: could not allocate memory for str\n");
                 exit(EXIT_FAILURE);
