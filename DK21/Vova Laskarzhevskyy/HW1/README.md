@@ -1,1 +1,1 @@
-README.md
+- Implementation of the algorithm for converting from binary to decimal
