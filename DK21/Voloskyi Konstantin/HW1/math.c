@@ -1,88 +1,65 @@
-#include <stdio.h>
 #include "math.h"
+#include <stdio.h>
+#include <assert.h>
 
-void input_size(int *row, int *col, const char *prompt);
-void input_size(int *row, int *col, const char *prompt)
+void multiply(int** result, int** m1, int** m2, int size)
 {
-    if (NULL != prompt)
+    int i, j;
+
+    for(i = 0; i < size; ++i)
+    for(j = 0; j < size; ++j)
     {
-        printf("%s", prompt);
-    }
-    scanf("%d%d", row, col);
-}
+        int k;
 
+        result[i][j] = 0;
 
-void size1 ()
-{
-    printf("Введіть розмір першої квадтратної матриці, наприклад: 4 4\n");
-    scanf("%d%d", &m, &n);
-}
-
-
-
-void matrix1_elements ()
-{
-    if( n !=m)
-      printf("Ви ввели не квадратну матрицю\n");
-      else{
-  printf("Введіть елементи матриці:\n");
-
-  for (  c = 0 ; c < m ; c++ )
-    for ( d = 0 ; d < n ; d++ )
-      scanf("%d", &first[c][d]);
-}
-}
-void size2 ()
-{
-    printf("Введіть розмір другої квадратної матриці:\n");
-  scanf("%d%d", &p, &q);
-}
-void matrix2_elements ()
-{
-    if(p!=q)
-  printf("Ви ввели не квадратну матрицю\n");
-      else{
-
-  if ( n != p )
-    printf("Матриці не можуть бути перемноженими\n");
-  else
-  {
-    printf("Введіть елементи другої матриці:\n");
-
-    for ( c = 0 ; c < p ; c++ )
-      for ( d = 0 ; d < q ; d++ )
-        scanf("%d", &second[c][d]);
+        for(k = 0; k < size; ++k)
+        result[i][j] += m1[i][k] * m2[k][j];
     }
 }
-}
-void multiple ()
+void dump(int** matrix, int size, const char* prompt)
 {
-    multiply[c][d]=0;
-    for ( c = 0 ; c < m ; c++ )
+    int i, j;
+
+    if(prompt != NULL)
+    puts(prompt);
+
+    for(i = 0; i < size; ++i, putchar('\n'))
+    for(j = 0; j < size; ++j)
+        printf("%5d", matrix[i][j]);
+}
+void generate(int** matrix, int size, int left, int right)
+{
+    int i, j;
+
+    for(i = 0; i < size; ++i)
+    for(j = 0; j < size; ++j)
+        matrix[i][j] = rand() % (right - left + 1) + left;
+}
+int** allocate_matrix(int size)
+{
+    int i;
+
+    int** matrix;
+
+    matrix = malloc(size * sizeof(int*));
+    assert(matrix != NULL);
+
+    for(i = 0; i < size; ++i)
     {
-      for ( d = 0 ; d < q ; d++ )
-      {
-        for ( k = 0 ; k < p ; k++ )
-        {
+    matrix[i] = malloc(size * sizeof(int));
 
-sum  +=  first[c][k]*second[k][d];
-        }
-        multiply[c][d]=sum;
-    sum = 0;
-
-}
+    assert(matrix[i] != NULL);
     }
+
+    return matrix;
 }
-void result ()
+void free_matrix(int** matrix, int size)
 {
-    printf("Результат:-\n");
+    int i;
 
-    for ( c = 0 ; c < m ; c++ )
-    {
-      for ( d = 0 ; d < q ; d++ )
-        printf("%d\t", multiply[c][d]);
+    for(i = 0; i < size; ++i)
+    free(matrix[i]);
 
-      printf("\n");
-    }
-
+    free(matrix);
 }
