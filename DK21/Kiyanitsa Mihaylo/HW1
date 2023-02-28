@@ -1,1 +1,39 @@
+#include <stdio.h>
+#include <string.h>
 
+int countSubstring(char *str, char *substr) {
+    int count = 0;
+    int len = strlen(substr);
+    
+    while (*str != '\0') {
+        if (strncmp(str, substr, len) == 0) {
+            count++;
+            str += len;
+        } else {
+            str++;
+        }
+    }
+    
+    return count;
+}
+
+int main() {
+    char str[100];
+    char substr[100];
+    int count;
+    
+    printf("Введите предложение: ");
+    fgets(str, 100, stdin);
+    
+    printf("Введите искомую последовательность символов: ");
+    fgets(substr, 100, stdin);
+    
+    // Удаляем символ новой строки из введенных строк
+    str[strlen(str)-1] = '\0';
+    substr[strlen(substr)-1] = '\0';
+    
+    count = countSubstring(str, substr);
+    printf("Количество вхождений: %d\n", count);
+    
+    return 0;
+}
