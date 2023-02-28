@@ -14,6 +14,7 @@ int main(void)
 
         alg4conv_bin2dec(str);
         free_mem4str(str);
+	str = NULL;
 
         return 0;
 }
