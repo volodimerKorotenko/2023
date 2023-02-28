@@ -8,8 +8,10 @@
 #include <stdio.h>
 #include "point.h"
 #include "line.h"
+#include "multiline.h"
 
 int main(int argc, const char * argv[]) {
+
 	// insert code here...
 	printf("Hello, World!\n");
 
@@ -43,6 +45,18 @@ int main(int argc, const char * argv[]) {
 	printf("length: %f\n", lenghtLine(cd));
 
 	destroyLine(cd);
+
+	MultiLine *line = createMultiLineByPoints(&c, &d);
+	printMultiLineLine(line);
+	printf("\n");
+	printf("length: %f\n", lenghtMultiLineLine(line));
+
+	addPointToMultiLine(line, &b);
+	printMultiLineLine(line);
+	printf("\n");
+	printf("length: %f\n", lenghtMultiLineLine(line));
+
+	destroyMultiLine(line);
 
 	return 0;
 }
