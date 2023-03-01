@@ -6,7 +6,7 @@ int factorial(int A)
         
         if(A == 0)
         {
-                return 0;
+                return 1;
         }
 
         for(int i = 1; i <= A; i++)
@@ -16,6 +16,8 @@ int factorial(int A)
 
         return fact;
 }
+
+/*
 
 int multiplication_by_two(int a)
 {
@@ -31,6 +33,7 @@ float division(float a, float b)
 {
         return a/b;
 }
+*/
 
 int modul(int a)
 {
