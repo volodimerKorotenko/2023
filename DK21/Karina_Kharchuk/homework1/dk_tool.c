@@ -41,63 +41,49 @@ int search_wanted(char sentence[], char wanted[])
 {
         int i = 0, j = 0, first = 1;
 
-        if('\0' == sentence[0])
+        if('\0' == sentence[0] || '\0' == wanted[0])
         {
                 return -1;
         }
 
-                while (sentence[i] != wanted[0] && sentence[i] != '\0'){
-                        i++;
-                }
-
-                if (sentence[i + 1] == '\0')
+                while (sentence[i] != wanted[0] && sentence[i] != '\0')
                 {
-                            return -1;
+                        i++;
                 }
 
                 while(sentence[i] == wanted [j] && sentence[i] != '\0' && wanted[j] != '\0')
                 { 
                         i++;
                         j++;
-                } 
+                }
 
-                if(sentence [i] != '\0' && wanted[j] != '\0' && sentence[i] != wanted [j])
+                if(sentence[i] == '\0' && wanted[j] != '\0')
+                {
+                        return -1;
+                }
+
+                while (sentence [i] != '\0' && wanted[j] != '\0' && sentence[i] != wanted [j])
                 {
                         j = 0;
 
                         while (sentence[i] != wanted[0] && sentence[i] != '\0'){
                                   i++;
                          }
- 
-                          if (sentence[i + 1] == '\0')
-                                {     
-                                      return -1;
-                                }
- 
+
                         while(sentence[i] == wanted [j] && sentence[i] != '\0' && wanted[j] != '\0')
                         {
                               i++;
                               j++;
                         }
-                        
-                        first = i - j;
-
-                        if (wanted[i + 1] == '\0') {
-                                return first + 1;
-                        } else { 
+                        if(sentence[i] == '\0' && wanted[j] != '\0') 
+                        {   
                                 return -1;
                         }
-                } else {
+                 }
+                  
+                 first = i - j;
 
-                        first = i - j;
-
-                        if (wanted[i + 1] == '\0') {
-                             return first + 1;
-                        } else {
-                                        return -1;
-                        
-                               }
-                }
+                 return first + 1;
 }
 
 void input_validation(int a)
