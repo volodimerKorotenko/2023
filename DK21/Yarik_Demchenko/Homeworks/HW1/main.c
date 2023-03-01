@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "dk_tool.h"
 
-int main (int argc, char *argv[]) {
+int main () {
     int row = 2, column = 2;
     printf("Enter matrix rows: ");
     scanf("%d", &row);

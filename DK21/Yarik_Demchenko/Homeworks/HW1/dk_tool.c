@@ -38,7 +38,11 @@ void print_matrix(int **matrix, int row, int column) {
 
 int **get_transpositioned_matrix(int **matrix, int row, int column) {
     int **transpositioned = create_matrix(column, row);
-    
+
+    if(matrix == NULL || NULL == transpositioned) {
+        return NULL;
+    }
+
     for(int i = 0; i < row; i++) {
         for(int j = 0; j < column; j++) {
             *(*(transpositioned + j) + i) = *(*(matrix + i) + j);
