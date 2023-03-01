@@ -1,1 +1,1 @@
-To be continued
+- 6 Laskarzhevskyy Vova
