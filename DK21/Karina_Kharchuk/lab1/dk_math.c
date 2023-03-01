@@ -3,6 +3,11 @@
 int factorial(int A)
 {
         int fact = 1;
+        
+        if(A == 0)
+        {
+                return 0;
+        }
 
         for(int i = 1; i <= A; i++)
         {

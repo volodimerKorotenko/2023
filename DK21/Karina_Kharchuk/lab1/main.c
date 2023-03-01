@@ -6,6 +6,12 @@ int main(int argc, const char **argv)
 {
         int A;
         int B;
+        int first;
+        int sum;
+        int division;
+        int fact;
+        int mod;
+        float result;
 
         printf("Your math example: Q = A!/|2×A+B|\n");
 
@@ -15,23 +21,27 @@ int main(int argc, const char **argv)
         printf("Enter integer digit B: ");
         scanf("%d", &B);
 
-        A = modul(A);
+        if(A < 0)
+        {
+                printf("You can`t have factorial from negative digit");
+                return -1;
+        }
 
-        int fact = factorial(A);
+        fact = factorial(A);
 
-        int first = multiplication_by_two(A);
+        first = A * 2;
 
-        int sum =  addition(first, B);
+        sum = first + B;
 
-        int mod = modul(sum);
+        mod = modul(sum);
 
         if(mod == 0)
         {
                 printf("You can`t devide by 0\n");
-                return 0;
+                return -1;
         }
 
-        float result = division(fact, mod);
+        result = fact / mod;
 
         printf("Q = %f\n", result);
 
