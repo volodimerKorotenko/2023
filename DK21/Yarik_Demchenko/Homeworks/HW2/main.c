@@ -41,6 +41,7 @@ int main () {
     printf("Circle3 area: %f\n", getCircleArea(array[1]));
     destroyCircle(array[0]);
     destroyCircle(array[1]);
+    destroyPoint(center2);
 
     return 0;
 }
