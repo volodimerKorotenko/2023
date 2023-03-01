@@ -7,7 +7,7 @@ int countSubstring(const char *str, const char *substr) {
     char *temp_substr = (char *) malloc((substr_len + 1) * sizeof(char));
 
     if (temp_str == NULL || temp_substr == NULL) {
-        printf("Ошибка выделения памяти\n");
+        printf("РћС€РёР±РєР° РІС‹РґРµР»РµРЅРёСЏ РїР°РјСЏС‚Рё\n");
         return -1;
     }
 
