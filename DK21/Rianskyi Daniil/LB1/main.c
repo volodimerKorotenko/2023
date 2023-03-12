@@ -16,7 +16,9 @@ int main (int argc, const char * argv[]){
     stop_stupid(&C);
 
     stop_stupid3(&B, &C);
-
+    stop_stupid1(&A, &C);
+    
+    printf("Your data: \n");
     printf("%d\n", A);
     printf("%d\n", B);
     printf("%d\n", C);
