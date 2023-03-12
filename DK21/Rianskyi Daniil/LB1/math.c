@@ -25,7 +25,7 @@ long sum_factorials (int start, int finish){
 }
 
 void stop_stupid(int *num) {
-    while (scanf("%d", num) != 1 || *num <= 0) {
+    while (scanf("%d", num) != 1 ) {
         printf("Invalid input, please enter a number: ");
         while (getchar() != '\n') {}
     }
@@ -38,10 +38,11 @@ void stop_stupid2(int *num) {
     }
 }
 
-void stop_stupid3(int *num) {
-    while (scanf("%d", num) != 1) {
-        printf("Invalid input, please enter a number: ");
-        while (getchar() != '\n') {}
+void stop_stupid3(int *B, int *C){
+    if(*B + *C <= 0){
+        printf("Invalid input, B + C > 0");
+        stop_stupid(B);
+        stop_stupid(C);
     }
 }
 
