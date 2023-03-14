@@ -4,7 +4,6 @@
 // Code for header body
 #include <stdio.h>
 
-int myAbs(int a);
 int myFactorial(int a);
 int myPow(int number, int pow);
 
