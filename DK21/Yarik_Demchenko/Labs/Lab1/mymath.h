@@ -7,6 +7,5 @@
 int myAbs(int a);
 int myFactorial(int a);
 int myPow(int number, int pow);
-int inputSafeInt();
 
 #endif //MYMATH_C_
