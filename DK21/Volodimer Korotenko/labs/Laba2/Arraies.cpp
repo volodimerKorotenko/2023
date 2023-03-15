@@ -9,6 +9,5 @@ int main()
 	InputArray( List , Size );
 	BulbSort( List, Size );
 	Display( List, Size );
-	system( "Pause" );
 	DestroyArray( List, Size );
 }
