@@ -80,6 +80,7 @@ void Display( int* Array, int Size ) {
 		}
 	}
 	printf( "] MAX = %i\n", Array[Size - 1] );
+	system( "Pause" );
 }
 void DestroyArray( int* Array, int Size ) {
 	free( Array );
