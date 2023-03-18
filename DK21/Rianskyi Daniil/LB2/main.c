@@ -22,20 +22,25 @@ int main() {
     printf("Reversed iteration:\n");
     print_list(head);
 
-    Node *current = head;
-    Node *prev = NULL;
-    Node *next = NULL;
+    if (head != NULL) {
+        Node *current = head;
+        Node *prev = NULL;
+        Node *next = NULL;
 
-    while (current != NULL) {
-        next = current->next;
-        current->next = prev;
-        prev = current;
-        current = next;
+        while (current != NULL) {
+            next = current->next;
+            current->next = prev;
+            current->prev = next; 
+            prev = current;
+            current = next;
+        }
+        head = prev;
     }
-    head = prev;
 
     printf("Iteration:\n");
     print_list(head);
+
+    delete_list(&head);
 
     return 0;
 }
