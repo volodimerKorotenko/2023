@@ -1,7 +1,12 @@
 #pragma once
+typedef struct Node {
+	int value;
+	struct Node* next;
+} Node;
 int GetInt( int Max, const char Message[] );
-int* createArray( int Size );
-void InputArray( int* Array, int Size );
-void BulbSort( int* Array, int Size );
-void Display( int* Array, int Size );
-void DestroyArray( int* Array, int Size );
+Node* Shift( Node *head, int data );
+Node* DataEntry( Node* Head, int Size );
+Node* BulbSort( Node* Head );
+void ListOutput( Node* Head );
+int Max( Node* Head );
+void FreeList( Node* Head );

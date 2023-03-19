@@ -1,13 +1,13 @@
 ﻿#include "Functions.h"
 int main()
 {
-	int Size;
+	int Size = 0;
 	do {
-		Size = GetInt( 6, "Enter dimension value: " );
+		Size = GetInt( 6, "Entri size" );
 	} while( Size < 0 );
-	int *List = createArray( Size );
-	InputArray( List , Size );
-	BulbSort( List, Size );
-	Display( List, Size );
-	DestroyArray( List, Size );
+	Node *List = 0;
+	List = DataEntry( List, Size );
+	List = BulbSort( List );
+	ListOutput( List );
+	FreeList( List );
 }
