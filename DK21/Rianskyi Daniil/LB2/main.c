@@ -5,41 +5,19 @@
 int main() {
     Node *head = NULL;
 
-    int n;
+    int n, data;
     printf("Enter the number of elements: ");
-    stop_stupid2(&n);
+    stop_stupid(&n);
 
-    int data;
-    for (int i = 0; i < n; i++) {
-        printf("Enter element %d: ", i + 1);
-        while (scanf("%d", &data) != 1) {
-            printf("Invalid input, try again: ");
-            while (getchar() != '\n');
-        }
-        append(&head, data);
-    }
+    print_elements(&n, &data, &head);
 
     printf("Reversed iteration:\n");
     print_list(head);
 
-    if (head != NULL) {
-        Node *current = head;
-        Node *prev = NULL;
-        Node *next = NULL;
-
-        while (current != NULL) {
-            next = current->next;
-            current->next = prev;
-            current->prev = next; 
-            prev = current;
-            current = next;
-        }
-        head = prev;
-    }
+    turns_list(&head);
 
     printf("Iteration:\n");
     print_list(head);
-
     delete_list(&head);
 
     return 0;
