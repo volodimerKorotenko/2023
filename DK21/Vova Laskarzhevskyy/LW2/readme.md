@@ -1,1 +1,1 @@
-to be continued
+Word sorting algorithm is implemented
