@@ -79,6 +79,7 @@ void print_list(list_t *list_ptr)
 	} 
 	printf("\n");
 }
+
 char add_word2list(list_t *list_ptr, char *word, int length)
 {
 	if (list_ptr == NULL) {
