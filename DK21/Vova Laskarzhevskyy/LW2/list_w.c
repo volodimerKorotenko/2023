@@ -1,150 +1,157 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 #include "list_w.h"
 
 node_t *create_node(char *word, int length) {
-	node_t *node = malloc(sizeof(*node));
-	if (node != NULL) {
-		node->length = length;
-		node->word = word;
-		node->next = NULL;
+	node_t *node_ptr = malloc(sizeof(*node_ptr));
+	if (node_ptr == NULL) {
+		fprintf(stderr, "Error: memory not allocated\n");
+		return NULL;
 	}
-	return node;
+	node_ptr->word = malloc((length + 1) * sizeof(char));
+	if (node_ptr->word == NULL) {
+		fprintf(stderr, "Error: memory not allocated by word\n");
+		free(node_ptr);
+		return NULL;
+	}
+	memcpy(node_ptr->word, word, length);
+	node_ptr->word[length] = '\0';
+	node_ptr->length = length;
+	node_ptr->next = NULL;
+
+	return node_ptr;
 };
 
 void delete_node(node_t *node_ptr)
 {
 	if (node_ptr != NULL) {
-		free(node_ptr->word);
 		free(node_ptr);
 	}
 }
 
+/*
 void print_node(node_t *node_ptr)
 {
 	if (node_ptr != NULL) {
 		printf("%s", node_ptr->word);
 	}
 }
+*/
 
-list_t *create_list(void)
+list_t *create_list(char *word, int length)
 {
-	list_t *node_list = malloc(sizeof(*create_list));
+	list_t *list_ptr = malloc(sizeof(*list_ptr));
 
-	if (node_list != NULL) {
-		node_list->head = NULL;
+	if (list_ptr == NULL) {
+		return NULL;
 	}
-	return node_list;
+	list_ptr->head = create_node(word, length);
+	if (list_ptr->head == NULL) {
+		free(list_ptr);
+		return NULL;
+	}
 
+	return list_ptr;
 }
 
 void delete_list(list_t *list_ptr)
 {
 	if (list_ptr == NULL) {
 		return;
-
 	}
 	node_t *node_ptr = list_ptr->head;
 	while (node_ptr != NULL) {
 		node_t *tmp = node_ptr->next;
-		free(node_ptr);
+		delete_node(node_ptr);
 		node_ptr = tmp;
 	}
 	free(list_ptr);
 }
 
-void add_word2list(list_t *list_ptr, char *word, int length) {
-	node_t *new_node = malloc(sizeof(*new_node));
-	if (new_node == NULL) {
-		fprintf(stderr, "Error: memory allocation failed\n");
+void print_list(list_t *list_ptr)
+{
+	if (list_ptr == NULL) {
+		fprintf(stderr, "Error: invalid a pointer to list\n");
 		exit(EXIT_FAILURE);
 	}
-	new_node->word = word;
-	new_node->length = length;
-	new_node->next = NULL;
-
+	node_t *node_ptr = list_ptr->head;
+	while (node_ptr != NULL) {
+		printf("%s ", node_ptr->word);
+		node_ptr = node_ptr->next;
+	} 
+	printf("\n");
+}
+char add_word2list(list_t *list_ptr, char *word, int length)
+{
+	if (list_ptr == NULL) {
+		fprintf(stderr, "Error: list pointer is null\n");
+		return 0;
+	}
+	node_t *node_ptr = create_node(word, length);
+	if (node_ptr == NULL) {
+		fprintf(stderr, "Error: unable ot create new node\n");
+		return 0;
+	}
 	if (list_ptr->head == NULL) {
-		list_ptr->head = new_node;
-	} else {
-		node_t *current = list_ptr->head;
-		while (current->next != NULL) {
-		current = current->next;
-        }
-        current->next = new_node;
-    }
+		list_ptr->head = node_ptr;
+	}
+	node_t *tail = list_ptr->head; 
+
+	while (tail->next != NULL) {
+		tail = tail->next;
+	}
+	tail->next = node_ptr;
+	return 1;
 }
 
 void sort_word_list(list_t *list_ptr) 
 {
-	node_t *current_node = list_ptr->head;
-	node_t *next_node = current_node->next;
-
-	if (current_node == NULL) {
+	if (list_ptr == NULL || list_ptr->head == NULL) {
 		return;
 	}
 
-	while (next_node != NULL) {
-		if (strlen(current_node->word) > strlen(next_node->word)) {
+	int sorted = 0;
+	node_t *current_node, *next_node, *temp_node;
 
+	while (!sorted) {
+		sorted = 1;
+		current_node = list_ptr->head;
+		next_node = current_node->next;
+		temp_node = NULL;
+		while (next_node != NULL) {
+			if (strlen(current_node->word) > strlen(next_node->word)) {
+				current_node->next = next_node->next;
+				next_node->next = current_node;
+				
+				if (temp_node == NULL) {
+                                	list_ptr->head = next_node;
+				} else {
+					temp_node->next = next_node;
 
+				}
+				temp_node = next_node;
+				next_node = current_node->next;
+				sorted = 0;
+			} else {
+				temp_node = current_node;
+				current_node = next_node;
+				next_node = next_node->next;
+			}
 		}
 	}
 }
-/*
-void sort_word_list(list_t *list) 
-{
-	node_t *current = list->head;
-	node_t *next_node = NULL;
 
-	char *tmp_word = NULL;
-	int tmp_length = 0;
-
+void max_word_list(list_t *list_ptr)
+{                                                                               
+	node_t *current = list_ptr->head;
+	node_t *max_node = current;
 	if (current == NULL) {
 		return;
 	}
 
-	while (current->next != NULL) {
-		next_node = current->next;
-		while (next_node != NULL) {
-			if (current->length > next_node->length) {
-				tmp_word = current->word;
-				tmp_length = current->length;
-
-				current->word = next_node->word;
-				current->length = next_node->length;
-
-				next_node->word = tmp_word;
-				next_node->length = tmp_length;
-			}
-			next_node = next_node->next;
+	while (current != NULL) {
+		if (current->length > max_node->length) {
+			max_node = current;
 		}
 		current = current->next;
 	}
-	free(tmp_word);
-}
-*/
-
-void max_word_list(list_t *list_ptr)
-{
-	node_t *current = list_ptr->head;
-	node_t *next_node = NULL;
-
-	if (current == NULL) {
-		return ;
-	}
-	while (next_node != NULL) {
-		if (current->length > next_node->length) {
-			current->word = next_node->word;
-			current->length = next_node->length;
-		} else {
-			next_node->word = current->word;
-			next_node->length = current->length;
-		}
-	}
-	node_t *max_word = list_ptr->head;
-	while (max_word != NULL) {
-		printf("%s ", max_word->word);
-	}
-	delete_node(next_node);
+	printf("max node = %s;\n", max_node->word);
 }
