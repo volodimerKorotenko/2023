@@ -9,12 +9,16 @@ typedef struct node {
 
 Node *create_node(int data);
 
-void append(Node **head_ref, int data);
+void stop_stupid(int *n);
+
+void print_elements(int *n, int *data, Node **head);
 
 void print_list(Node *head);
 
-void delete_list(Node **head_ref);
+void append(Node **head_ref, int data);
 
-void stop_stupid2(int *n);
+void turns_list (Node **head_ref);
+
+void delete_list(Node **head_ref);
 
 #endif
