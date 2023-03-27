@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "math1.h"
+#include "math.h"
 
 int main() {
     float a, b, c, q;
