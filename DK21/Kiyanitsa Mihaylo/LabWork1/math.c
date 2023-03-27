@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <math.h>
-#include "math1.h"
+#include "math.h"
 
 float input_float(char* prompt) {
     /* Функція запиту дійсного числа з перевіркою на відповідність типу float */
