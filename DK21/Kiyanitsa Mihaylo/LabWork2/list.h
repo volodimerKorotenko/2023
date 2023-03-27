@@ -11,4 +11,4 @@ void sortList(Node** head);
 void printList(Node* head);
 void freeList(Node* head);
 
-#endif
+#endif /* LINKED_LIST_H */
