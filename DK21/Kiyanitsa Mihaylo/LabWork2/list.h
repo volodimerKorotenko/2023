@@ -1,8 +1,5 @@
-#ifndef LINKED_LIST_H
-#define LINKED_LIST_H
-
-#include <stdio.h>
-#include <stdlib.h>
+#ifndef LISTS_H
+#define LISTS_H
 
 typedef struct Node {
     int data;
@@ -11,5 +8,7 @@ typedef struct Node {
 
 void addNode(Node** head, int data);
 void sortList(Node** head);
+void printList(Node* head);
+void freeList(Node* head);
 
-#endif /* LINKED_LIST_H */
+#endif
