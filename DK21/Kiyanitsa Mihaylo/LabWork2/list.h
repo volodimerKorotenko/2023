@@ -1,14 +1,15 @@
-#ifndef NODE_H
-#define NODE_H
+#ifndef LINKED_LIST_H
+#define LINKED_LIST_H
 
-typedef struct node {
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct Node {
     int data;
-    struct node *next;
+    struct Node* next;
 } Node;
 
-Node* createNode(int data);
-void insertNode(Node** head, Node* newNode);
-void sortList(Node* head);
-void printList(Node* head);
+void addNode(Node** head, int data);
+void sortList(Node** head);
 
-#endif /* NODE_H */
+#endif /* LINKED_LIST_H */
