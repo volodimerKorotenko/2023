@@ -45,7 +45,7 @@ int search_wanted(char sentence[], char wanted[])
         {
                 return -1;
         }
-
+            
                 while (sentence[i] != wanted[0] && sentence[i] != '\0')
                 {
                         i++;
@@ -61,8 +61,8 @@ int search_wanted(char sentence[], char wanted[])
                 {
                         return -1;
                 }
-
-                while (sentence [i] != '\0' && wanted[j] != '\0' && sentence[i] != wanted [j])
+                
+                while (sentence [i] != '\0' && wanted[j] != '\0' && sentence[i] != wanted [j]);
                 {
                         j = 0;
 
@@ -79,6 +79,7 @@ int search_wanted(char sentence[], char wanted[])
                         {   
                                 return -1;
                         }
+                        
                  }
                   
                  first = i - j;
