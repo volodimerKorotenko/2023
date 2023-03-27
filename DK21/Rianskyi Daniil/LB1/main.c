@@ -8,18 +8,22 @@ int main (int argc, const char * argv[]){
 
     int A, B, C;
 
-    printf("Enter A (numbers cannot be less than zero): ");
+    printf("Enter A: ");
     stop_stupid(&A);
     printf("Enter B (not equal to 0): ");
     stop_stupid2(&B);
     printf("Enter C: ");
-    stop_stupid3(&C);
+    stop_stupid(&C);
 
+    stop_stupid3(&B, &C);
+    stop_stupid1(&A, &C);
+    
+    printf("Your data: \n");
     printf("%d\n", A);
     printf("%d\n", B);
     printf("%d\n", C);
     
-    int D = 0;
+    int D = 1;
     double result = q(A, B, C);
     printf("Result: %.2lf\n", result);
 

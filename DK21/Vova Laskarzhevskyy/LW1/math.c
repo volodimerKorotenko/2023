@@ -15,9 +15,9 @@ int factorial(int a)
 		fprintf(stderr, "Error, this operation cannot be performed\n");
 		exit(EXIT_FAILURE);
 	}
-	int n = 1;
+	int result = 1;
 	for (int i = 1; i <= a; ++i) {
-		n *= i;
+		result *= i;
 	}
-	return n;
+	return result;
 }

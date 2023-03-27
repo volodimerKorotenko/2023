@@ -1,6 +1,6 @@
 #ifndef DK_TOOL_H_INCLUDED
 
-#define DK_TOOL_HINCLUDED
+#define DK_TOOL_H_INCLUDED
 
 char *allocate_mem4str(void);
 void free_mem4str(char *str);

@@ -44,6 +44,12 @@ int main(int argc, const char * argv[]) {
 	insertIntElementToIntListAtIndex(l, 1, 7);
 	printIntList(l);
 
+	addIntValueToIntList(l, 8);
+	printIntList(l);
+
+	insertIntElementToIntListAtIndex(l, 2, 8);
+	printIntList(l);
+
 	removeFirstElementFromIntList(l);
 	printIntList(l);
 

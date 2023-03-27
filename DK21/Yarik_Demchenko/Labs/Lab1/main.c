@@ -6,17 +6,17 @@ int main () {
     printf("Note, that every value must be integer!\n");
 
     printf("Please, enter A: ");
-    a = inputSafeInt();
+    scanf("%d", &a);
 
     printf("Please, enter B (B > 0): ");
-    b = inputSafeInt();
+    scanf("%d", &b);
     if(b <= 0) {
         printf("B must be > 0!\n");
         return 1;
     }
 
     printf("Please, enter C: ");
-    c = inputSafeInt();
+    scanf("%d", &c);
     if (b + myPow(5, c) == 0) {
         printf("B + 5^C can't be equal to 0!\n");
         return 1;
