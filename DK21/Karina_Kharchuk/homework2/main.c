@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "triangle.h"
 
-int main (int argc, const char argv)
+int main (int argc, const char *argv[])
 {
         Point *a = create_point(1, 1);
 
