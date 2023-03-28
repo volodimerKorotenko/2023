@@ -1,78 +1,51 @@
-#include "node.h"
 #include <stdlib.h>
-#include <stdio.h>
+#include "lists.h"
 
-Node* createNode(int data) {
-    Node* newNode = (Node*) malloc(sizeof(Node));
+void addNode(Node** head, int data) {
+    Node* newNode = (Node*)malloc(sizeof(Node));
     newNode->data = data;
-    newNode->next = NULL;
-    return newNode;
+    newNode->next = *head;
+    *head = newNode;
 }
 
-void insertNode(Node** head, Node* newNode) {
-    if (*head == NULL) {
-        *head = newNode;
-        return;
-    }
+void sortList(Node** head) {
+    Node *current, *sorted;
+    sorted = NULL;
 
-    Node* current = *head;
+    while (*head != NULL) {
+        current = *head;
+        *head = (*head)->next;
 
-    while (current->next != NULL) {
-        current = current->next;
-    }
+        if (sorted == NULL || current->data < sorted->data) {
+            current->next = sorted;
+            sorted = current;
+        } else {
+            Node* temp = sorted;
 
-    current->next = newNode;
-}
-
-void sortList(Node* head) {
-    Node* current = head;
-    Node* maxNode = head;
-    Node* temp;
-    int max = head->data;
-
-    while (current != NULL) {
-        if (current->data > max) {
-            max = current->data;
-            maxNode = current;
-        }
-        current = current->next;
-    }
-
-    if (maxNode != head) {
-        current = head;
-        while (current->next != maxNode) {
-            if (current->data > maxNode->data) {
-                temp = createNode(current->data);
-                temp->next = maxNode;
-                maxNode->data = current->data;
-                current->data = temp->data;
-                free(temp);
+            while (temp->next != NULL && current->data > temp->next->data) {
+                temp = temp->next;
             }
-            current = current->next;
+
+            current->next = temp->next;
+            temp->next = current;
         }
     }
 
-    current = head;
-    while (current != NULL) {
-        temp = current->next;
-        while (temp != NULL) {
-            if (current->data > temp->data) {
-                int tempData = current->data;
-                current->data = temp->data;
-                temp->data = tempData;
-            }
-            temp = temp->next;
-        }
-        current = current->next;
-    }
+    *head = sorted;
 }
 
 void printList(Node* head) {
-    Node* current = head;
-
-    while (current != NULL) {
-        printf("%d ", current->data);
-        current = current->next;
+    for (Node* temp = head; temp != NULL; temp = temp->next) {
+        printf("%d ", temp->data);
     }
-    printf("\n");
+}
+
+void freeList(Node* head) {
+    Node* temp;
+
+    while (head != NULL) {
+        temp = head;
+        head = head->next;
+        free(temp);
+    }
 }

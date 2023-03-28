@@ -1,25 +1,28 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include "node.h"
+#include "lists.h"
 
 int main() {
     Node* head = NULL;
-    int data, n;
+    int data, count;
 
-    printf("Enter the number of elements in the list: ");
-    scanf("%d", &n);
+    printf("Enter the number of nodes: ");
+    scanf("%d", &count);
 
-    for (int i = 0; i < n; i++) {
-        printf("Enter element %d: ", i+1);
+    for (int i = 0; i < count; i++) {
+        printf("Enter the data for node %d: ", i+1);
         scanf("%d", &data);
-        Node* newNode = createNode(data);
-        insertNode(&head, newNode);
+        addNode(&head, data);
     }
-    
-    sortList(head);
 
-    printf("Sorted list: ");
+    printf("\nList before sorting:\n");
     printList(head);
+
+    sortList(&head);
+
+    printf("\nList after sorting:\n");
+    printList(head);
+
+    freeList(head);
 
     return 0;
 }
