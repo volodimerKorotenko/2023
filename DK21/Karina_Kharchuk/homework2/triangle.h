@@ -31,6 +31,8 @@ void print_line(Line *aLine);
 
 double length_line(Line *aLine);
 
+int validation(Line *aLine,Line *bLine,Line *cLine);
+
 void destroy_line(Line *aLine);
 
 

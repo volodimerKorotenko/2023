@@ -3,6 +3,8 @@
 
 int main (int argc, const char *argv[])
 {
+        printf("ab і ас є катетами, а bc - гіпотенуза\n");
+
         Point *a = create_point(1, 1);
 
         Point *b = create_point(1, 5);
@@ -23,7 +25,15 @@ int main (int argc, const char *argv[])
         printf("length ca: %f\n", length_line(ca));
         print_line(ca);
 
-        printf("square of triangle is %f\n", (length_line(ab)*length_line(ca))/2);
+        int val = validation(ab, ca, bc);
+        
+        if(val == 0)
+        {
+                printf("747\n");
+                return 0;
+        }
+
+        printf("площа трикутника: %f\n", (length_line(ab)*length_line(ca))/2);
 
         for (int i = 1; i <= length_line(ab); ++i)
         {

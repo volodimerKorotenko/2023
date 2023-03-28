@@ -67,6 +67,17 @@ void print_line(Line *aLine)
         print_point(aLine->B);
         printf("\n");
 }
+
+int validation(Line *aLine, Line *bLine, Line *cLine)
+{
+        if(length_line(aLine) >= length_line(cLine) || length_line(bLine) >= length_line(cLine))
+        {
+                printf("гіпотенуза не може бути більшою ніж катет\n");
+                return 0;
+        }
+        return 1;
+}
+
 double length_line(Line *aLine)
 {
         if(NULL == aLine)
