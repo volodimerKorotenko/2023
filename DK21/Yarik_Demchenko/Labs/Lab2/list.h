@@ -31,5 +31,6 @@ void removeFirstElementFromIntSingleList(IntSingleList *list);
 // 1: success, 0 - fail
 int addIntValueToIntSingleList(IntSingleList *list, int value);
 int removeIntElementFromIntSingleListAtIndex(IntSingleList *list, int index);
+float findAverageFromIntSingleList(IntSingleList *list);
 
 #endif //MAIN_C_

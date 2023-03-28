@@ -157,3 +157,17 @@ int removeIntElementFromIntSingleListAtIndex(IntSingleList *list, int index) {
 
 	return 1;
 }
+
+
+
+float findAverageFromIntSingleList(IntSingleList *list) {
+	if (NULL == list) {
+ 		return 0;
+	}
+	int sum = 0, i = 0;
+	for (SingleListIntElement *element = list->head; element != NULL; element = element->next, i++) {
+		sum += element->value;
+	}
+
+	return (float)sum / (float)(i);
+}
