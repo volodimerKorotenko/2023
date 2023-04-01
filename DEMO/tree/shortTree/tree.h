@@ -35,6 +35,7 @@ void deleteNodeWithValue(ShortTree *aTree, short aValue);
 void mergeTrees(ShortTree *aTreeDst, ShortTree *aTreeSrc);
 
 void printTree(ShortTree *aTree);
+void printNode(ShortNode *aNode);
 int countNodesWithTree(ShortTree *aTree);
 
 #endif /* tree_h */

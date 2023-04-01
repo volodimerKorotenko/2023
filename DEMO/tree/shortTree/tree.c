@@ -93,7 +93,7 @@ ShortNode *findNodeWithValue(ShortTree *aTree, short aValue)
 	
 	if (NULL != aTree && NULL != aTree->root)
 	{
-		ShortNode *theCurrentNode = aTree->root; //<! - start from root
+		theCurrentNode = aTree->root; //<! - start from root
 		while (aValue != theCurrentNode->value) //<! - walk through the tree
 		{
 			theCurrentNode = (aValue < theCurrentNode->value)
@@ -191,6 +191,15 @@ void print_short_node(ShortNode *node) {
 	printf("Элемент: %d\n", node->value);
 	print_short_node(node->rightChild);
 }
+
+void printNode(ShortNode *aNode)
+{
+	if (aNode == NULL)
+	 return;
+
+	printf("value(%d)", aNode->value);
+}
+
 //int countNodesWithTree(ShortTree *aTree);
 
 #pragma mark -
