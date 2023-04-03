@@ -28,7 +28,7 @@ void deleteNodeWithValue(FloatTree *aTree, float aValue);
 void printTree(FloatTree *aTree);
 void printNode(FloatNode *aNode);
 
-FloatNode *getNodeSuccessor(FloatTree *tree, FloatNode *toDelete);
+FloatNode *getNodeSuccessor(FloatNode *toDelete);
 FloatNode *createFloatNodeWithValue(float aValue);
 void print_float_node(FloatNode *node);
 

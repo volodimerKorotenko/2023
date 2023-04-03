@@ -5,7 +5,7 @@
 int main () {
     FloatTree *tree = createFloatTree();
     int n = 0;
-    float temp = 0, valueToFind = 13.13f;
+    float temp = 0;
 
     printf("Enter number of tree elements (int): ");
     scanf("%d", &n);
@@ -24,7 +24,7 @@ int main () {
     printf("\n");
 
     printf("Finding value 13.13: ");
-    findNode = findNodeWithValue(tree, valueToFind);
+    findNode = findNodeWithValue(tree, 13.13f);
     printNode(findNode);
     printf("\n");
 
@@ -33,5 +33,5 @@ int main () {
     printf("Tree: \n");
     printTree(tree);
 
-
+    destroyFloatTree(tree);
 }

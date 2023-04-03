@@ -160,7 +160,7 @@ void deleteNodeWithValue(FloatTree *aTree, float aValue) {
 			parent->leftChild = current->leftChild;
 		}
 	} else {
-		FloatNode *successor = getNodeSuccessor(aTree, current);
+		FloatNode *successor = getNodeSuccessor(current);
 		if (aTree->root == successor) {
 			aTree->root = NULL;
 		} else if (parent->leftChild == current) {
@@ -198,7 +198,7 @@ void printNode(FloatNode *aNode)
 	printf("value(%f)", aNode->value);
 }
 
-FloatNode *getNodeSuccessor(FloatTree *tree, FloatNode *toDelete) {
+FloatNode *getNodeSuccessor(FloatNode *toDelete) {
 	FloatNode *successParent = toDelete;
 	FloatNode *successor = toDelete;
 	FloatNode *current = toDelete->rightChild;
