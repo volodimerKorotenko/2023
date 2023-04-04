@@ -161,8 +161,6 @@ void deleteNodeWithValue(IntTree *aTree, int aValue) {
 		} else {
 			parent->rightChild = successor;
 		}
-		current->leftChild = NULL;
-		current->rightChild = NULL;
 	}
 
 	current->leftChild = NULL;
