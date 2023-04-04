@@ -168,10 +168,10 @@ void deleteNodeWithValue(FloatTree *aTree, float aValue) {
 		} else {
 			parent->rightChild = successor;
 		}
-		current->leftChild = NULL;
-		current->rightChild = NULL;
 	}
 
+	current->leftChild = NULL;
+	current->rightChild = NULL;
 	destroyNode(current);
 }
 
