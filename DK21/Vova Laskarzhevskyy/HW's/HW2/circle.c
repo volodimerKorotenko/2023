@@ -30,5 +30,5 @@ void print_circle(circle_t *circle_ptr)
 		return;
 	}
 	print_point(circle_ptr->o);
-	printf("R = %d", circle_ptr->radius);
+	printf("R = %d\n", circle_ptr->radius);
 }
