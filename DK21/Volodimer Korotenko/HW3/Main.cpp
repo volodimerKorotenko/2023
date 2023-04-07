@@ -7,11 +7,13 @@ int main() {
 		Size = GetInt( 6, "Entri size " );
 	} while( Size < 1  );
 	Rectangle** RectangleArray = CreateRectangleArray( Size );
+	FillRectangleArraies( RectangleArray, Size );
 
 	printf( "Create extra rectangle\n" );
 	Rectangle* Temp = CreateRectangle();
 	FillRectangle( Temp );
-	printf( "Index: %i\n", AddToEndArray( RectangleArray, Temp, Size ) );
+	RectangleArray = AddToEndArray( RectangleArray, Temp, Size );
+	printf( "Index: %i\n", Size );
 	FeguresOutput( RectangleArray, Size );
 	printf( "%f\n", CalcAreaArraies( RectangleArray , Size ) );
 

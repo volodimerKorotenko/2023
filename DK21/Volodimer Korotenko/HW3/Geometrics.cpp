@@ -77,7 +77,7 @@ Rectangle** CreateRectangleArray( int Size ) {
 	for( size_t i = 0; i < Size; i++ ) {
 		Temp[i] = (Rectangle*) malloc( sizeof( Rectangle ) );
 		Temp[i] = CreateRectangle();
-		FillRectangle( Temp[i] );
+		//FillRectangle( Temp[i] );
 	}
 	return Temp;
 }
@@ -102,10 +102,15 @@ PointList* swift( PointList* Head, int x, int y ) {
 	}
 	return Head;
 }
-int AddToEndArray( Rectangle** fegures,Rectangle* fegure, int &Size ) {
-	fegures[Size] = CreateRectangle( fegure );
+Rectangle** AddToEndArray( Rectangle** fegures,Rectangle* fegure, int &Size ) {
+	Rectangle** Temp = CreateRectangleArray( Size + 1 );
+	for( size_t i = 0; i < Size; i++ ) {
+		Temp[i] = fegures[i];
+	}
+	Temp[Size] = fegure;
 	Size++;
-	return Size;
+	free( fegures );
+	return Temp;
 }
 int AddAfterIndex( Rectangle** fegures, Rectangle* fegure, int Index, int &Size ) {
 	if( Index <= Size ) {
@@ -145,6 +150,11 @@ float CalcAreaArraies( Rectangle** figures, int Size ) {
 		Area += CalcArea( figures[i] );
 	} return Area;
 }
+void FillRectangleArraies( Rectangle** figures , int Size ) {
+	for( size_t i = 0; i < Size; i++ ) {
+		FillRectangle( figures [Size - 1]);
+	}
+}
 void PointOutput( Rectangle* figure ) {
 	PointList* Points = figure->Coordinates;
 	while( Points != NULL ) {
@@ -173,8 +183,8 @@ void FreeFigure( Rectangle* figure ) {
 	free( figure );
 }
 void FreeFiguresArray( Rectangle** figures, int Size ) {
-	for( size_t i = --Size; i > 0; i-- ) {
+	for( size_t i = 0; i < Size; i++ ) {
 		FreeFigure( figures[i] );
 	}
-	free( *figures );
+	free( figures );
 }
