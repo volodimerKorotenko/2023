@@ -129,7 +129,17 @@ void TreeShiftInLeft( Node* Parent, Node* Child ) {
 		Parent->RightChild = Child->LeftChild;
 		free( Child );
 	} else {
-		free( Child );
+		if( Child->LeftChild ) {
+			do {
+				Parent = Child;
+				Child = Child->LeftChild;
+				Parent->Value = Child->Value;
+			} while( Child->LeftChild );
+			Parent->LeftChild = Child->RightChild;
+			free( Child );
+		} else {
+			free( Child );
+		}
 	}
 }
 void FreeTree( Node* Nodes ) {
