@@ -1,10 +1,3 @@
-
-
-
-
-
-
-
 #include "signle_list.h"
 #include <stdlib.h>
 
@@ -65,13 +58,6 @@ void print_float_list(Float_list *list) {
 	}
 
 	printf("[");
-//	SingleListIntElement *element = list->head;
-//
-//	while(NULL != element) {
-//		SingleListIntElement *tmp = element->next;
-//		printSingleListIntElement(element);
-//		element = tmp;
-//	}
 
 	for (List_element *element = list->head; element != NULL; element = element->next) {
 		print_float_list_element(element);

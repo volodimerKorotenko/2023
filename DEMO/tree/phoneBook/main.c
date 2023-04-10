@@ -19,14 +19,15 @@ int main(int argc, const char * argv[])
 	insertNode(theTree, "baa", "1233");
 	
 	NodePtr theFindNode = findNode(theTree, "acc");
-	
+	printf ("find result: %x", (unsigned int)theFindNode);
+
 	if (deleteNode(theTree, "acc"))
 	{
 		theFindNode = findNode(theTree, "acc");
-		printf ("find result: %x", (unsigned int)theFindNode);
+		printf ("\nfind result: %x", (unsigned int)theFindNode);
 	}
 	
 	// insert code here...
-	printf("Hello, World!\n");
+	printf("\nHello, World!\n");
 	return 0;
 }
