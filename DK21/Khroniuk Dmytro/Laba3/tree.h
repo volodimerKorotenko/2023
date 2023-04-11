@@ -22,11 +22,7 @@ void destroyDoubleTree(DoubleTree *aTree);
 void AddElement(DoubleTree *aTree, double aValue);
 DoubleNode *findNodeWithValue(DoubleTree *aTree, double aValue);
 void deleteNodeWithValue(DoubleTree *aTree, double aValue);
-
-void mergeTrees(DoubleTree *aTreeDst, DoubleTree *aTreeSrc);
-
 void printTree(DoubleTree *aTree);
 void printNode(DoubleNode *aNode);
-int countNodesWithTree(DoubleTree *aTree);
 
 #endif /* tree_h */

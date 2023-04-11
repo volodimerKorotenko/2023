@@ -27,7 +27,7 @@ int main(void) {
 		printf("The node with request value was not found\n");
 	}
 
-	deleteNodeWithValue(tree, 15);
+	deleteNodeWithValue(tree, 15.2);
 	printTree(tree);
 
 	destroyDoubleTree(tree);
