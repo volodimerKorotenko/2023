@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "tree.h"
 
-int main(int argc, const char * argv[]) {
+int main(void) {
 	DoubleTree *tree = createDoubleTree();
 	AddElement(tree, 15.2);
 	AddElement(tree, 3.4);
@@ -17,7 +17,7 @@ int main(int argc, const char * argv[]) {
 
 	printTree(tree);
 
-	DoubleNode *Find_Node = findNodeWithValue(tree, 1);
+	DoubleNode *Find_Node = findNodeWithValue(tree, 1.9);
 
 	if (NULL != Find_Node)
 	{

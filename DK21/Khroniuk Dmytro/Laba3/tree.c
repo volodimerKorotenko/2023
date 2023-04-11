@@ -3,7 +3,7 @@
 
 static void destroyNode(DoubleNode *aNode);
 static DoubleNode *createDoubleNodeWithValue(double aValue);
-static DoubleNode *getSuccessor(DoubleTree *tree, DoubleNode *toDelete);
+static DoubleNode *getSuccessor( DoubleNode *toDelete);
 static void print_double_node(DoubleNode *node);
 
 DoubleTree *createDoubleTree()
@@ -151,7 +151,7 @@ void deleteNodeWithValue(DoubleTree *aTree, double aValue) {
 			parent->leftChild = current->rightChild;
 		}
 	} else {
-		DoubleNode *successor = getSuccessor(aTree, current);
+		DoubleNode *successor = getSuccessor(current);
 		if (aTree->root == current) {
 			aTree->root = successor;
 		} else if (parent->leftChild == current) {
@@ -214,7 +214,7 @@ DoubleNode *createDoubleNodeWithValue(double aValue)
 	return theNode;
 }
 
-DoubleNode *getSuccessor(DoubleTree *tree, DoubleNode *toDelete) {
+DoubleNode *getSuccessor(DoubleNode *toDelete) {
 	DoubleNode *successParent = toDelete;
 	DoubleNode *successor = toDelete;
 	DoubleNode *current = toDelete->rightChild;
