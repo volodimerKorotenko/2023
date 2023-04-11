@@ -77,7 +77,6 @@ Rectangle** CreateRectangleArray( int Size ) {
 	for( size_t i = 0; i < Size; i++ ) {
 		Temp[i] = (Rectangle*) malloc( sizeof( Rectangle ) );
 		Temp[i] = CreateRectangle();
-		//FillRectangle( Temp[i] );
 	}
 	return Temp;
 }
@@ -107,30 +106,30 @@ Rectangle** AddToEndArray( Rectangle** fegures,Rectangle* fegure, int &Size ) {
 	for( size_t i = 0; i < Size; i++ ) {
 		Temp[i] = fegures[i];
 	}
-	Temp[Size] = fegure;
+	Temp[Size] = CreateRectangle( fegure );
 	Size++;
 	free( fegures );
 	return Temp;
 }
 int AddAfterIndex( Rectangle** fegures, Rectangle* fegure, int Index, int &Size ) {
-	if( Index <= Size ) {
+	if( Index < Size ) {
 		fegures[Index] = CreateRectangle( fegure );
-	} else {
-		return -1;
-	}
+	} else if( Index == Size ) {
+		AddToEndArray( fegures , fegure , Size );
+	} else return -1;
 	return Index;
 }
 void FillRectangle( Rectangle* Figure ) {
 	int XFirst, YFirst, XSecond, YSecond;
 	XFirst = GetInt( 6, "Enter x coordinate(-32767 for 32767)" );
 	YFirst = GetInt( 6, "Enter y coordinate(-32767 for 32767)" );
-	Figure->Coordinates = swift( Figure->Coordinates, XFirst, YFirst );
 	do {
 		XSecond = GetInt( 6, "Enter second x coordinate(-32767 for 32767)" );
 	} while( XFirst == XSecond );
 	do {
 		YSecond = GetInt( 6, "Enter second y coordinate(-32767 for 32767)" );
 	} while( YFirst == YSecond );
+	Figure->Coordinates = swift( Figure->Coordinates, XFirst, YFirst );
 	Figure->Coordinates = swift( Figure->Coordinates, XFirst, YSecond );
 	Figure->Coordinates = swift( Figure->Coordinates, XSecond, YSecond );
 	Figure->Coordinates = swift( Figure->Coordinates, XSecond, YFirst );
@@ -152,7 +151,7 @@ float CalcAreaArraies( Rectangle** figures, int Size ) {
 }
 void FillRectangleArraies( Rectangle** figures , int Size ) {
 	for( size_t i = 0; i < Size; i++ ) {
-		FillRectangle( figures [Size - 1]);
+		FillRectangle( figures [i]);
 	}
 }
 void PointOutput( Rectangle* figure ) {
