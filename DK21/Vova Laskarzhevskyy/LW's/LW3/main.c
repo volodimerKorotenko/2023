@@ -23,7 +23,7 @@ int main(void)
 	if (find_val != NULL) { 
 		show_node(find_val);
 	} else {
-		printf("node was't found\n");
+		fprintf(stderr, "Error: node was't found\n");
 	}
         print_tree(tree_ptr);
         delete_tree(tree_ptr);
