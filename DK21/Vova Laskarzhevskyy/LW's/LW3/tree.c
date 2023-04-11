@@ -152,7 +152,7 @@ void delete_node_value(tree_t *tree_ptr, char data) {
 		} else {
 			parent->right = current->left;
 		}
-	} else if (NULL == current->left) {
+	} else if (current->left == NULL) {
 		if (tree_ptr->root == current) {
 			tree_ptr->root = current->right;
 		} else if (parent->right == current) {
