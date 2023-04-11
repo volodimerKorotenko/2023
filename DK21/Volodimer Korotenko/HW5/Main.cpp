@@ -9,7 +9,7 @@ int main()
    } while( count < 0 );
    BinaryTree = TreeEntry( BinaryTree, count );
    PrintTree( BinaryTree );
-   DeleteNode(  BinaryTree, GetInt( 6, "Delete value: " ));
+   DeleteNode( BinaryTree, GetInt( 6, "Delete value: " ));
    PrintTree( BinaryTree );
    FreeTree( BinaryTree );
 }
