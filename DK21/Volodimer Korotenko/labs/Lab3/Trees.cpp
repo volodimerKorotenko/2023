@@ -91,7 +91,7 @@ void PrintTree( Node* Tree ) {
 		if( Tree->RightChild ) {
 			PrintTree( Tree->RightChild );
 		}
-		printf("%i\n", Tree->Value);
+		printf("%f\n", Tree->Value);
 	}
 }
 void DeleteNode( Node* Tree, int Data ) {
@@ -120,7 +120,7 @@ void DeleteNode( Node* Tree, int Data ) {
 	}
 }
 void TreeShiftInLeft( Node* Parent, Node* Child ) {
-	if( Parent && Child ) {
+	if( Parent || Child->RightChild ) {
 		while( Child->RightChild ) {
 			Parent = Child;
 			Child = Child->RightChild;
@@ -129,7 +129,7 @@ void TreeShiftInLeft( Node* Parent, Node* Child ) {
 		Parent->RightChild = Child->LeftChild;
 		free( Child );
 	} else {
-		if( Child->LeftChild ) {
+		 if( Child->LeftChild ) {
 			do {
 				Parent = Child;
 				Child = Child->LeftChild;
