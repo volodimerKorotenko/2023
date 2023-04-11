@@ -6,7 +6,7 @@ int main(int argc, const char * argv[])
 {
 
 	Float_list *list = create_float_list();
-
+        
 	print_float_list(list);
 
 	add_float_value_to_list(list, 8.7);
@@ -20,7 +20,8 @@ int main(int argc, const char * argv[])
 
 	remove_last_element_from_list(list);
 	print_float_list(list);
-
+        
+        printf("the number of elements: %ld\n", count_elements(list));
         delete_float_list(list);
 
         return 0;

@@ -82,7 +82,8 @@ long count_elements(Float_list *list) {
 }
 
 int add_float_value_to_list(Float_list *list, float value) {
-	if (NULL == list) {
+	
+        if (NULL == list) {
  		return 0;
 	}
 
