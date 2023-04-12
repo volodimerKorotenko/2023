@@ -21,7 +21,7 @@ void deleteColor(Color_s* color);
 
 // Фігура як масив точок з кольором
 typedef struct Figure_s{
-    Point* points[PT_NUM]; // IMPORTANT: possible coordinates here are from [-100;-100] to [100;100]
+    Point* points[PT_NUM]; // ВАЖЛИВО: в прикладі координати мають значення від [-100;100], але потім масштабуються до [-1;1] як цього потребує OpenGL
     Color_s* color;
 } Figure_s;
 // Методи для роботи з фігурою
