@@ -50,15 +50,15 @@ void deleteFigure(Figure_s *figure) {
 
 
 void drawFigure(Figure_s* figure){
-    // Початок малювання примітиву
+    // РџРѕС‡Р°С‚РѕРє РјР°Р»СЋРІР°РЅРЅСЏ РїСЂРёРјС–С‚РёРІСѓ
     glBegin(GL_TRIANGLES);
-        // Призначення кольору для примітиву
+        // РџСЂРёР·РЅР°С‡РµРЅРЅСЏ РєРѕР»СЊРѕСЂСѓ РґР»СЏ РїСЂРёРјС–С‚РёРІСѓ
         glColor3f(figure->color->R, figure->color->G, figure->color->B);
-        // Призначення координат точкам примітиву
+        // РџСЂРёР·РЅР°С‡РµРЅРЅСЏ РєРѕРѕСЂРґРёРЅР°С‚ С‚РѕС‡РєР°Рј РїСЂРёРјС–С‚РёРІСѓ
         glVertex2f(figure->points[0]->x / 100.0f, figure->points[0]->y / 100.0f);
         glVertex2f(figure->points[1]->x / 100.0f, figure->points[1]->y / 100.0f);
         glVertex2f(figure->points[2]->x / 100.0f, figure->points[2]->y / 100.0f);
-        // Кінець малювання примітиву
+        // РљС–РЅРµС†СЊ РјР°Р»СЋРІР°РЅРЅСЏ РїСЂРёРјС–С‚РёРІСѓ
     glEnd();
 }
 

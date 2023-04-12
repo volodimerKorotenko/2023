@@ -4,58 +4,58 @@
 #include <stdio.h>
 #include "point.h"
 
-// Призначаємо кілкьість точок в фігурі
+// РџСЂРёР·РЅР°С‡Р°С”РјРѕ РєС–Р»РєСЊС–СЃС‚СЊ С‚РѕС‡РѕРє РІ С„С–РіСѓСЂС–
 #define PT_NUM 3
 
 
-// Колір як стурктура
+// РљРѕР»С–СЂ СЏРє СЃС‚СѓСЂРєС‚СѓСЂР°
 typedef struct Color_s{
     float R;
     float G;
     float B;
 } Color_s;
-// Методи для роботи з кольором
+// РњРµС‚РѕРґРё РґР»СЏ СЂРѕР±РѕС‚Рё Р· РєРѕР»СЊРѕСЂРѕРј
 Color_s* createColor(float R, float G, float B);
 void deleteColor(Color_s* color);
 
 
-// Фігура як масив точок з кольором
+// Р¤С–РіСѓСЂР° СЏРє РјР°СЃРёРІ С‚РѕС‡РѕРє Р· РєРѕР»СЊРѕСЂРѕРј
 typedef struct Figure_s{
     Point* points[PT_NUM]; // IMPORTANT: possible coordinates here are from [-100;-100] to [100;100]
     Color_s* color;
 } Figure_s;
-// Методи для роботи з фігурою
+// РњРµС‚РѕРґРё РґР»СЏ СЂРѕР±РѕС‚Рё Р· С„С–РіСѓСЂРѕСЋ
 Figure_s* createFigure(Point** points, Color_s * color);
 void deleteFigure(Figure_s* figure);
 void drawFigure(Figure_s* figure);
 
 
-// Елемент списку фігур
+// Р•Р»РµРјРµРЅС‚ СЃРїРёСЃРєСѓ С„С–РіСѓСЂ
 typedef struct FigureListElement_s{
     FigureListElement_s* prev;
     FigureListElement_s* next;
     Figure_s* figure;
 } FigureListElement_s;
-// Методи для роботи з елементом списку фігур
+// РњРµС‚РѕРґРё РґР»СЏ СЂРѕР±РѕС‚Рё Р· РµР»РµРјРµРЅС‚РѕРј СЃРїРёСЃРєСѓ С„С–РіСѓСЂ
 FigureListElement_s* createListElement(Figure_s* figure);
 void deleteListElement(FigureListElement_s* listElement);
 void drawListElement(FigureListElement_s* listElement);
 
 
-// Двозв'язний список фігур
+// Р”РІРѕР·РІ'СЏР·РЅРёР№ СЃРїРёСЃРѕРє С„С–РіСѓСЂ
 typedef struct FigureList_s{
     FigureListElement_s* head;
     FigureListElement_s* tail;
 } FigureList_s;
-// Методи для роботи зі списком фігур
+// РњРµС‚РѕРґРё РґР»СЏ СЂРѕР±РѕС‚Рё Р·С– СЃРїРёСЃРєРѕРј С„С–РіСѓСЂ
 FigureList_s *createFigList(void);
 void deleteFigList(FigureList_s *list);
 void drawFigList(FigureList_s *list);
 long countOfFigList(FigureList_s *list);
-int addFigToFigList(FigureList_s *list, Figure_s* figure); // 1 - успіх, 0 - провал
+int addFigToFigList(FigureList_s *list, Figure_s* figure); // 1 - СѓСЃРїС–С…, 0 - РїСЂРѕРІР°Р»
 void removeLastElementFromFigList(FigureList_s *list);
 void removeFirstElementFromFigList(FigureList_s *list);
-int insertFigToFigListAtIndex(FigureList_s *list, int index, Figure_s* figure); // 1 - успіх, 0 - провал
-int removeFigFromFigListAtIndex(FigureList_s *list, int index); // 1 - успіх, 0 - провал
+int insertFigToFigListAtIndex(FigureList_s *list, int index, Figure_s* figure); // 1 - СѓСЃРїС–С…, 0 - РїСЂРѕРІР°Р»
+int removeFigFromFigListAtIndex(FigureList_s *list, int index); // 1 - СѓСЃРїС–С…, 0 - РїСЂРѕРІР°Р»
 
 #endif
