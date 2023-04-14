@@ -1,1 +1,1 @@
-# A implementation single list type "int"
+# Implementation of a single list of type "int"
