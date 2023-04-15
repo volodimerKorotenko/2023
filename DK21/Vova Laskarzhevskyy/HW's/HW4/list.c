@@ -1,5 +1,10 @@
 #include "list.h"
 
+/*
+#define list_for_each(pos, head) \
+	for (pos = (head)->next; pos != (head); pos = pos->next)
+	*/
+
 node_t *create_node(double data)
 {
 	node_t *node_ptr = malloc(sizeof(*node_ptr));
@@ -20,7 +25,7 @@ void delete_node(node_t *node_ptr)
 void print_node(node_t *node_ptr)
 {
 	if (node_ptr != NULL) {
-		printf("%.2lf\n", node_ptr->data);
+		printf("%.2lf", node_ptr->data);
 	}
 }
 
@@ -52,11 +57,16 @@ void print_list(list_t *list_ptr)
 	if (list_ptr == NULL) {
 		return;
 	}
+
+	printf("[");
 	node_t *node_ptr = list_ptr->head;
-	while(node_ptr != NULL) {
+	for (; node_ptr != NULL; node_ptr = node_ptr->next) {
 		print_node(node_ptr);
-		node_ptr = node_ptr->next;
+		if (node_ptr->next != NULL) {
+			printf(", ");
+		}
 	}
+	printf("]\n");
 }
 
 long count_list(list_t *list_ptr)
@@ -121,9 +131,54 @@ int add_node2list_by_index(list_t *list_ptr, int index, double data)
 			node_ptr = node_ptr->next;
 			++current;
 		}
+		if (ex_node != NULL) {
+			free(ex_node);
+			return 0;
+		}
 		node_ptr->next = ex_node->next;
 		ex_node->next = node_ptr;
 	}
 
+	return 1;
+}
+int list_del_node_by_index(list_t *list_ptr, int index)
+{
+	if (list_ptr == NULL && list_ptr->head == NULL) {
+		return 0;
+	}
+	long count = count_list(list_ptr);
+	if (index >= count) {
+		return 0;
+	}
+	node_t *node_ptr = list_ptr->head;
+	if (index == 0) {
+		delete_node(node_ptr);
+		list_ptr->head = node_ptr;
+		node_ptr = list_ptr->head->next;
+
+	} else if (index == (count - 1)) {
+		node_t *node_ptr = list_ptr->head;
+		if (node_ptr->next == NULL) {
+			list_ptr->head = NULL; 
+			delete_node(node_ptr);
+			return 0;
+		}
+		while (node_ptr->next != NULL
+				&& node_ptr->next->next != NULL) {
+			node_ptr = node_ptr->next;
+		}
+		delete_node(node_ptr->next);
+		node_ptr->next = NULL;
+	} else {
+		int current = 0;
+		node_t *ex_node = list_ptr->head;
+		for (;ex_node != NULL && current < index - 1;
+				ex_node = ex_node->next){
+			node_t *to_delete = ex_node->next;
+			ex_node->next = to_delete->next;
+			delete_node(to_delete);
+			++current;
+		}
+	}
 	return 1;
 }
