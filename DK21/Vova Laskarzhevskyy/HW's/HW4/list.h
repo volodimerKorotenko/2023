@@ -22,6 +22,7 @@ void print_list(list_t *list_ptr);
 long count_list(list_t *list_ptr);
 int add_node2list(list_t *list_ptr, double data);
 int add_node2list_by_index(list_t *list_ptr, int index, double data);
+int list_del_node_by_index(list_t *list_ptr, int index);
 
 
 #endif
