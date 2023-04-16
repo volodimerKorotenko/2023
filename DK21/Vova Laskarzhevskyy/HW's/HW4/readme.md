@@ -1,1 +1,1 @@
-# Implementation of a single list of type "int"
+# Implementation of a single list of type "double"
