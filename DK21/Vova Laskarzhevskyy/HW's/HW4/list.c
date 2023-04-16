@@ -84,7 +84,7 @@ long count_list(list_t *list_ptr)
 	return count;
 }
 
-int add_node2list(list_t *list_ptr, double data)
+double add_node2list(list_t *list_ptr, double data)
 {
 	if (list_ptr == NULL) {
 		return 0;
@@ -136,7 +136,7 @@ void del_last_node_list(list_t *list_ptr)
 	node_ptr->next = NULL;
 }
 
-int add_node2list_by_index(list_t *list_ptr, int index, double data)
+double add_node2list_by_index(list_t *list_ptr, int index, double data)
 {
 	if (list_ptr == NULL) {
 		return 0;
@@ -170,7 +170,7 @@ int add_node2list_by_index(list_t *list_ptr, int index, double data)
 
 	return 1;
 }
-int list_del_node_by_index(list_t *list_ptr, int index)
+double list_del_node_by_index(list_t *list_ptr, int index)
 {
 	if (list_ptr == NULL && list_ptr->head == NULL) {
 		return 0;
@@ -187,14 +187,14 @@ int list_del_node_by_index(list_t *list_ptr, int index)
 		return 1;
 	} else {
 		int current = 0;
-		node_t *ex_node = list_ptr->head;
+	node_t *ex_node = list_ptr->head;
 		while (ex_node != NULL && current < index - 1) { 
-			node_t *to_delete = ex_node->next;
-			ex_node->next = to_delete->next;
-			delete_node(to_delete);
 			ex_node = ex_node->next;
 			++current;
 		}
+		node_t *to_delete = ex_node->next;
+		ex_node->next = to_delete->next;
+		delete_node(to_delete);
+		return 1;
 	}
-	return 1;
 }
