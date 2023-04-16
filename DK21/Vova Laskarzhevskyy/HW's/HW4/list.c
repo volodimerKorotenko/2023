@@ -72,7 +72,7 @@ void print_list(list_t *list_ptr)
 long count_list(list_t *list_ptr)
 {
 	if (list_ptr == NULL) {
-		return 1;
+		return 0;
 	}
 	long count = 0;
 	node_t *node_ptr = list_ptr->head;
@@ -105,6 +105,35 @@ int add_node2list(list_t *list_ptr, double data)
 	} 
 	tail->next = node_ptr;
 	return 1;
+}
+
+void del_first_node_list(list_t *list_ptr) 
+{
+	if (list_ptr == NULL || list_ptr->head == NULL) {
+		return;
+	}
+	node_t *node_ptr = list_ptr->head->next;
+	delete_node(list_ptr->head);
+	list_ptr->head = node_ptr;
+}
+
+void del_last_node_list(list_t *list_ptr) 
+{
+	if (list_ptr == NULL || list_ptr->head == NULL) {
+		return;
+	} 
+	node_t *node_ptr = list_ptr->head;
+	if (node_ptr->next == NULL) {
+		list_ptr->head = NULL;
+		delete_node(node_ptr);
+		return;
+	}
+
+	while (node_ptr->next != NULL && node_ptr->next->next != NULL) {
+		node_ptr = node_ptr->next;
+	}
+	delete_node(node_ptr->next);
+	node_ptr->next = NULL;
 }
 
 int add_node2list_by_index(list_t *list_ptr, int index, double data)
@@ -150,33 +179,20 @@ int list_del_node_by_index(list_t *list_ptr, int index)
 	if (index >= count) {
 		return 0;
 	}
-	node_t *node_ptr = list_ptr->head;
 	if (index == 0) {
-		delete_node(node_ptr);
-		list_ptr->head = node_ptr;
-		node_ptr = list_ptr->head->next;
-
+		del_first_node_list(list_ptr);
+		return 1;
 	} else if (index == (count - 1)) {
-		node_t *node_ptr = list_ptr->head;
-		if (node_ptr->next == NULL) {
-			list_ptr->head = NULL; 
-			delete_node(node_ptr);
-			return 0;
-		}
-		while (node_ptr->next != NULL
-				&& node_ptr->next->next != NULL) {
-			node_ptr = node_ptr->next;
-		}
-		delete_node(node_ptr->next);
-		node_ptr->next = NULL;
+		del_last_node_list(list_ptr);
+		return 1;
 	} else {
 		int current = 0;
 		node_t *ex_node = list_ptr->head;
-		for (;ex_node != NULL && current < index - 1;
-				ex_node = ex_node->next){
+		while (ex_node != NULL && current < index - 1) { 
 			node_t *to_delete = ex_node->next;
 			ex_node->next = to_delete->next;
 			delete_node(to_delete);
+			ex_node = ex_node->next;
 			++current;
 		}
 	}
