@@ -20,11 +20,11 @@ list_t *create_list(void);
 void delete_list(list_t *list_ptr);
 void print_list(list_t *list_ptr);
 long count_list(list_t *list_ptr);
-int add_node2list(list_t *list_ptr, double data);
+double add_node2list(list_t *list_ptr, double data);
 void del_first_node_list(list_t *list_ptr);
 void del_last_node_list(list_t *list);
-int add_node2list_by_index(list_t *list_ptr, int index, double data);
-int list_del_node_by_index(list_t *list_ptr, int index);
+double add_node2list_by_index(list_t *list_ptr, int index, double data);
+double list_del_node_by_index(list_t *list_ptr, int index);
 
 
 #endif
