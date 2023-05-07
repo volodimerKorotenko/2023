@@ -1,35 +1,47 @@
+//
+//  main.c
+//  demoTree2
+//
+//  Created by Slava Gubar on 4/25/17.
+//  Copyright © 2017 Slava Gubar. All rights reserved.
+//
+
 #include <stdio.h>
-#include "dk_tool.h"
+#include "tree.h"
 
-#define MAX_ROWS 100
-#define MAX_COLS 100
+int main(int argc, const char * argv[]) {
+	Tree *tree = createTree();
+	insertValueToTree(tree, 53);
+	insertValueToTree(tree, 43);
+	insertValueToTree(tree, 39);
+	insertValueToTree(tree, 30);
+	insertValueToTree(tree, 14);
+	insertValueToTree(tree, 9);
+	insertValueToTree(tree, 23);
 
-int main(void)
-{
-    int rows = 0, cols = 0;
-    printf("Enter number of rows (1-100): ");
-    scanf("%d", &rows);
-    printf("Enter number of columns (1-100): ");
-    scanf("%d", &cols);
+	insertValueToTree(tree, 35);
+	insertValueToTree(tree, 73);
+	insertValueToTree(tree, 61);
+	insertValueToTree(tree, 56);
 
-    if (rows < 1 || rows > MAX_ROWS || cols < 1 || cols > MAX_COLS)
-    {
-        printf("Invalid number of rows or columns.\n");
-        return 1;
-    }
+	printTree(tree);
 
-    int **matrix = allocateMatrix(rows, cols);
-    fillMatrix(rows, cols, matrix);
+	Node *node43 = findNodeWithValue(tree, 61);
 
-    printf("\n");
-    printMatrix(rows, cols, matrix);
+	if (NULL != node43)
+	{
+		printNode(node43);
+		printf("\n");
+	} else {
+		printf("The node with request key/value was not found\n");
+	}
 
-    transposeMatrix(rows, cols, matrix);
+	deleteNodeWithValue(tree, 30);
+	printTree(tree);
 
-    printf("\n");
-    printMatrix(rows, cols, matrix);
+	destroyTree(tree);
 
-    freeMatrix(matrix);
-
-    return 0;
+	// insert code here...
+	printf("Hello, World!\n");
+	return 0;
 }
