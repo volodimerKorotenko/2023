@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1683464468 source:e:\У виш\Інформатика\КОДблокс\hw3\array\array.c
+	<stdio.h>
+	<stdlib.h>
+	"array.h"
+
+1683464468 e:\У виш\Інформатика\КОДблокс\hw3\array\array.h
+
+1683464468 source:e:\У виш\Інформатика\КОДблокс\hw3\array\main.c
+	<stdio.h>
+	"array.h"
+
