@@ -1,3 +1,7 @@
+///////////////////////////////////////////// ДК -21 
+///////////////////////////////////////////// Рянський Даниїл
+///////////////////////////////////////////// Варіант № 15
+
 #include <GL/glut.h>
 #include <math.h>
 
@@ -38,8 +42,8 @@ void display() {
     ///////////////////////////////////////////// Побудування графіків 
     glBegin(GL_LINE_STRIP);
     for (float t = -4 * M_PI; t <= 4 * M_PI; t += 0.01) { /// Умова 
-        float x = exp(cos(t)) - 2 * cos(4 * t) + pow(sin(t / 4), 3) * cos(t);
-        float y = exp(cos(t)) - 2 * cos(4 * t) + pow(sin(t / 4), 3) * sin(t);
+        float x = (exp(cos(t)) - 2 * cos(4 * t) + pow(sin(t / 4), 3)) * cos(t);
+        float y = (exp(cos(t)) - 2 * cos(4 * t) + pow(sin(t / 4), 3)) * sin(t);
         glVertex2f(x, y);
     }
     glEnd();
