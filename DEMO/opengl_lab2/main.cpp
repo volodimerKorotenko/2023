@@ -4,7 +4,7 @@
 #include <GL/glut.h>
 #endif
 
-#include <stdlib.h>
+//#include <stdlib.h>
 
 // Глобальні змінні
 char title[] = "Cube";
@@ -13,6 +13,8 @@ bool moveScene = false;
 int mouse_x,
 mouse_y;
 float a_x = 0, a_y = 0;
+float zoom_param = -7.0;
+float zoom_delta = 0.1;
 
 
 // Ініціалізація OpenGL
@@ -36,7 +38,7 @@ void display()
     glLoadIdentity(); // Скидання параметрів матриці шляхом
     // завантаження одиничної матриці
 
-    glTranslatef(0.f, 0.f, -7.f); // Зміщення об'єкта у глибину екрану
+    glTranslatef(0.f, 0.f, zoom_param); // Зміщення об'єкта у глибину екрану
     glRotatef(a_x, 1, 0, 0); // Обертання навколо осі x
     glRotatef(a_y, 0, 1, 0); // Обертання навколо осі y
     // Малювання об'єкта – куба з гранями різного кольору
@@ -137,6 +139,19 @@ void mouseClick(int button, int state, int x, int y)
 }
 
 
+// Функція обробки події, що виникає при натисканні клавіш клавіатури
+void specKeyHandler(int sk, int x, int y)
+{
+    // Якщо натискаємо стрілку вгору - наближуємось до фігури, якщо вниз - віддаляємось від неї
+    if (sk == GLUT_KEY_UP) {
+        zoom_param += zoom_delta;
+    }
+    else if (sk == GLUT_KEY_DOWN) {
+        zoom_param -= zoom_delta;
+    }
+}
+
+
 // Функція обробки події, що виникає при виникнення руху мишки
 void mouseMove(int x, int y)
 {
@@ -158,6 +173,7 @@ void Timer(int value)
     glutTimerFunc(30, Timer, 0); // Новий запуск таймера на 30 мс
 }
 
+
 // Головна функція: програма GLUT виконується як консольний додаток
 int main(int argc, char* argv[])
 {
@@ -171,6 +187,7 @@ int main(int argc, char* argv[])
     glutKeyboardFunc(keyboard); // Реєстрація обробника подій клавіатури
     glutMouseFunc(mouseClick); // Реєстрація обробника натискання клавіш миші
     glutMotionFunc(mouseMove); // Реєстрація обробника руху миші
+    glutSpecialFunc(specKeyHandler); // Реєстрація обробника подій клавіатури (спеціальні клавіши)
     glutTimerFunc(0, Timer, 0); // Запуск та реєстрація обробки таймера
     initGL(); // Ініціалізація OpenGL
     glutMainLoop(); // Вхід у головний нескінченний цикл обробки
