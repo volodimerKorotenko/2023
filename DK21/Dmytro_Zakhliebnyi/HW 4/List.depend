@@ -1,0 +1,27 @@
+# depslib dependency file v1.0
+1682598494 source:e:\У виш\Інформатика\КОДблокс\hw2\list\node.c
+	<stdio.h>
+	<stdlib.h>
+	"node.h"
+
+1682597345 e:\У виш\Інформатика\КОДблокс\hw2\list\node.h
+	<stdio.h>
+	<stdlib.h>
+
+1682597717 source:e:\У виш\Інформатика\КОДблокс\hw2\list\main.c
+	<stdio.h>
+	"node.h"
+
+1683460630 source:e:\У виш\Інформатика\КОДблокс\hw4\list\main.c
+	<stdio.h>
+	"node.h"
+
+1683461129 e:\У виш\Інформатика\КОДблокс\hw4\list\node.h
+	<stdio.h>
+	<stdlib.h>
+
+1683461626 source:e:\У виш\Інформатика\КОДблокс\hw4\list\node.c
+	<stdio.h>
+	<stdlib.h>
+	"node.h"
+

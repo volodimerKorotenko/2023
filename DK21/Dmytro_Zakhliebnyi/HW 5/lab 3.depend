@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1682174720 source:e:\У виш\Інформатика\КОДблокс\lab 3\lab 3\main.c
+	<stdbool.h>
+	<string.h>
+	<ctype.h>
+	<stdio.h>
+	<stdlib.h>
+
