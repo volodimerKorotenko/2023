@@ -1,14 +1,23 @@
 #include "circles.h"
 
-int main(int argc, char **argv)
+int main(void)
 {
-	if (argc < 5) {
-		fprintf(stderr, "Error: enter only five arguments\n");
-		exit(EXIT_FAILURE);
-	}
-	arr_t *arr_ptr = create_arr_circles(10);
+	arr_t *arr_ptr = create_arr_circles(4);
+	circle_t *circle_ptr = create_circle(1, 1, 2);
+	
+	add_circles(arr_ptr, circle_ptr);
 
+	printf("All circles in array:\n");
+	print_arr_circles(arr_ptr);
 
+	circle_ptr = create_circle(3, 2, 5);
+	add_circles_at_index(arr_ptr, circle_ptr, 3);
 
-	return 0;
+	printf("All circles in array:\n");
+	print_arr_circles(arr_ptr);
+
+	delete_circle(circle_ptr);
+	delete_arr_circles(arr_ptr);
+
+    return 0;
 }
